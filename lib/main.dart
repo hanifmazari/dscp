@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+
+import 'package:dscp/config/routs.dart';
+import 'package:dscp/pages/homepage.dart';
+import 'package:dscp/pages/loginpage.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,14 +12,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(body: Home()),
     );
   }
 }
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -24,14 +27,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hanif"),
-      ),
-      body: WebView(
-        initialUrl: 'http://116.71.135.202/LeavePortal/',
-        javascriptMode: JavascriptMode.unrestricted,
-      ),
+    return MaterialApp(
+      
+      initialRoute: "/",
+      routes: {
+        "/":(context)=>LoginPage(),
+        MyRoutes.loginRout:(context)=>LoginPage(),
+        MyRoutes.homeRout:(context) =>HomePage(),
+        
+      },
     );
+    
   }
 }
